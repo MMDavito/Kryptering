@@ -101,7 +101,7 @@ public class Kryptering {
                         
         }return temp+rövare.charAt(rövare.length()-1);
        
-    
+
     }
 
 
@@ -109,7 +109,7 @@ public class Kryptering {
         
         
         String skit = JOptionPane.showInputDialog("Mata in vad du vill krypta");
-        
+        skit = skit.toLowerCase();
         int i = 0;
         String bygge ="";
         for (int j = 0; j < skit.length(); j++) {      
