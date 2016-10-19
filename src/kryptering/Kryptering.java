@@ -16,7 +16,98 @@ public class Kryptering {
     /**
      * @param args the command line arguments
      */
+    
     public static void main(String[] args) {
+        String rövartext = JOptionPane.showInputDialog("Sätt in din rövartext här");
+        String fultext = codeR(rövartext);
+        String avKryp = deCryptR(fultext);
+        System.out.println("Rövartext: "+rövartext);
+        System.out.println("Avkrypt ä: "+avKryp);
+        System.out.println("Crypttext: "+ fultext);
+        
+        
+    }
+
+    private static String codeR(String text) {
+        for (int i = 0; i < text.length(); i++) {
+            //kontroll om konsonant
+            
+            if (checkC(text.charAt(i))) {
+               //lägg in 0+konsonant
+              text = text.substring(0,i+1) + "o"+text.charAt(i)+text.substring(i+1);
+              i+=2;
+            }
+
+        }
+        return text;
+    }
+
+    private static boolean checkC(char c) {
+        switch (c) {
+            case 'a':
+                return false;
+            case 'A':
+                return false;
+            case 'e':
+                return false;
+            case 'E':
+                return false;
+            case 'i':
+                return false;
+            case 'I':
+                return false;
+            case 'o':
+                return false;
+            case 'O':
+                return false;
+            case 'u':
+                return false;
+            case 'U':
+                return false;
+            case 'y':
+                return false;
+            case 'Y':
+                return false;
+            case 'å':
+                return false;
+            case 'Å':
+                return false;
+            case 'ä':
+                return false;
+            case 'Ä':
+                return false;
+            case 'ö':
+                return false;
+            case 'Ö':
+                return false;
+            case ' ':
+                return false;
+            default:
+                return true;
+        }
+    }
+    private static String deCryptR(String rövare){
+        String temp = "";
+        int j= 0;
+        for (int i = 0; i < rövare.length(); i++) {
+            if(checkC(rövare.charAt(i))){
+               temp += rövare.substring(j, i);
+               i += 2;
+               j = i;
+            }
+            else{
+                temp += rövare.substring(j, i);
+            j = i;}
+                        
+        }return temp+rövare.charAt(rövare.length()-1);
+       
+    
+    }
+
+
+   /* public static void main(String[] args) {
+        
+        
         String skit = JOptionPane.showInputDialog("Mata in vad du vill krypta");
         
         int i = 0;
@@ -27,7 +118,7 @@ public class Kryptering {
         }
      /*   for (int j = 0; j < bygge.length(); j++) {
           //lägg in saker för att ändra runt lite   
-        }*/
+        }
         System.out.println(""+bygge);
     }
     public static char iron(int beast){
@@ -114,66 +205,6 @@ public class Kryptering {
         if (index > 30){
         index = index -6*6 ;}
            
-            return index;
+            return index;*/
     }
-
-   /* private static String codeR(String text) {
-        for (int i = 0; i < text.length(); i++) {
-            //kontroll om konsonant
-            
-            if (checkC(text.charAt(i))) {
-               //lägg in 0+konsonant
-              text = text.substring(0,i+1) + "o"+text.charAt(i)+text.substring(i+1);
-              i+=2;
-            }
-
-        }
-        return text;
-    }
-
-    private static boolean checkC(char c) {
-        switch (c) {
-            case 'a':
-                return false;
-            case 'A':
-                return false;
-            case 'e':
-                return false;
-            case 'E':
-                return false;
-            case 'i':
-                return false;
-            case 'I':
-                return false;
-            case 'o':
-                return false;
-            case 'O':
-                return false;
-            case 'u':
-                return false;
-            case 'U':
-                return false;
-            case 'y':
-                return false;
-            case 'Y':
-                return false;
-            case 'å':
-                return false;
-            case 'Å':
-                return false;
-            case 'ä':
-                return false;
-            case 'Ä':
-                return false;
-            case 'ö':
-                return false;
-            case 'Ö':
-                return false;
-            case ' ':
-                return false;
-            default:
-                return true;
-        }
-    }*/
-
-}
+    
